@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Данияр</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant:wght@300;400;500;600&family=Inter:wght@300;400;500&subset=cyrillic,cyrillic-ext&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #1a1a1a;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b3b3b3;
+      --accent: #d4a373;
+      --border: rgba(255, 255, 255, 0.1);
+      --column-width: 65ch;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      line-height: 1.6;
+      font-weight: 300;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      pointer-events: none;
+      z-index: 1000;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3vh 5vw;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-gap: 5vh 5vw;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 5vh;
+      height: min-content;
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 5vh;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-family: 'EB Garamond', serif;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-weight: 400;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      max-width: var(--column-width);
+    }
+
+    .lead {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.4rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+      max-width: var(--column-width);
+      font-weight: 400;
+    }
+
+    .caption {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    /* Profile */
+    .profile {
+      margin-bottom: 0.75rem;
+    }
+
+    .profile-image {
+      width: 12rem;
+      height: 12rem;
+      object-fit: cover;
+      object-position: center top;
+      margin-bottom: 0.75rem;
+      filter: grayscale(0%);
+      animation: fadeIn 1s ease-out forwards;
+      border-radius: 50%;
+    }
+
+    .bio {
+      margin-bottom: 1.5rem;
+      animation: fadeIn 1s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+
+    /* Navigation */
+    nav {
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-out 0.3s forwards;
+      opacity: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav li {
+      margin-bottom: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-family: 'EB Garamond', serif;
+      font-size: 1.4rem;
+      transition: color 0.3s ease;
+      position: relative;
+      letter-spacing: -0.01em;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after, 
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      animation: fadeIn 1s ease-out 0.4s forwards;
+      opacity: 0;
+      position: relative;
+      z-index: 5;
+      background-color: var(--bg-color);
+      padding: 0.5rem 0;
+    }
+
+    .social-link {
+      color: var(--text-secondary);
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-link:hover {
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+
+    /* Sections */
+    .section {
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      position: relative;
+      margin-bottom: 1rem;
+      padding-left: 1rem;
+      font-family: 'EB Garamond', serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      background-color: var(--accent);
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .project {
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .project:hover {
+      transform: translateY(-5px);
+    }
+    
+    .project-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+    }
+    
+    .project-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    
+    .project-image {
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .project:hover .project-image {
+      transform: scale(1.03);
+    }
+    
+    /* Travel project styles */
+    .project-travel {
+      background-color: rgba(255, 255, 255, 0.03);
+      border-radius: 4px;
+      overflow: hidden;
+      border-bottom: 3px solid var(--accent);
+    }
+    
+    .project-travel .project-content {
+      padding: 1.5rem;
+    }
+    
+    .project-travel .aspect-ratio-box {
+      margin-bottom: 0;
+      overflow: hidden;
+    }
+    
+    .project-travel .project-title {
+      font-size: 1.6rem;
+    }
+    
+    .project-travel .project-description {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* App project styles */
+    .project-app {
+      background-color: rgba(255, 255, 255, 0.03);
+      padding: 1.5rem;
+      border-radius: 4px;
+      border-left: 3px solid rgba(100, 149, 237, 0.7);
+    }
+    
+    .project-app-container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .app-screenshot-container {
+      width: 260px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .app-screenshot {
+      width: 260px;
+      height: 520px; /* Roughly 9:16 ratio (iPhone-like) */
+      border-radius: 24px;
+      overflow: hidden;
+      border: 8px solid #222;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+    
+    .app-screenshot::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 24px;
+      background-color: #222;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      z-index: 1;
+    }
+    
+    .app-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    
+    .app-content {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .app-store-link {
+      margin-top: 1.5rem;
+    }
+    
+    .app-store-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background-color: rgba(100, 149, 237, 0.15);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(100, 149, 237, 0.3);
+    }
+    
+    .app-store-button:hover {
+      background-color: rgba(100, 149, 237, 0.25);
+      transform: translateY(-2px);
+    }
+    
+    .app-store-button svg {
+      color: rgba(100, 149, 237, 0.9);
+    }
+    
+    @media (max-width: 992px) {
+      .project-app-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .app-screenshot-container {
+        width: 100%;
+      }
+      
+      .app-screenshot {
+        margin: 0 auto;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .project-travel .project-title {
+        font-size: 1.4rem;
+      }
+      
+      .project-travel .project-description {
+        font-size: 0.95rem;
+      }
+      
+      .app-store-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Photography */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 200px;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .gallery-item a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gallery-item:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transform: translateY(-2px);
+    }
+
+    .gallery-item.portrait {
+      grid-row: span 2;
+    }
+
+    .gallery-item.landscape {
+      grid-column: span 2;
+    }
+
+    .gallery-item.featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      filter: grayscale(20%);
+    }
+
+    .gallery-item:hover .gallery-image {
+      transform: scale(1.03);
+      filter: grayscale(0%);
+    }
+
+    /* Gallery item overlay */
+    .gallery-item a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0);
+      transition: background 0.3s ease;
+      z-index: 2;
+    }
+
+    .gallery-item a::after {
+      content: '';
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      width: 25px;
+      height: 25px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'%3E%3C/path%3E%3Cpolyline points='15 3 21 3 21 9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 3;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+    }
+
+    .gallery-item:hover a::after {
+      opacity: 0.8;
+    }
+
+    .gallery-item:hover a::before {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Media queries for responsive gallery */
+    @media (max-width: 992px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 180px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 160px;
+      }
+      
+      .gallery-item.landscape,
+      .gallery-item.featured {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+      }
+      
+      .gallery-item {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+        height: 50vh;
+      }
+      
+      .gallery-item.portrait {
+        height: 70vh;
+      }
+    }
+
+    /* Music */
+    .music-player {
+      background-color: rgba(0,0,0,0.2);
+      padding: 1.5rem;
+      border-radius: 2px;
+      max-width: var(--column-width);
+      border: 1px solid var(--border);
+    }
+
+    .track {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .track:last-child {
+      border-bottom: none;
+    }
+
+    .track-number {
+      width: 2rem;
+      color: var(--text-secondary);
+    }
+
+    .track-info {
+      flex-grow: 1;
+    }
+
+    .track-title {
+      font-family: 'EB Garamond', serif;
+      margin-bottom: 0.25rem;
+    }
+
+    .track-length {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+
+    /* Writings */
+    .article {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article:last-child {
+      border-bottom: none;
+    }
+
+    .article-date {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .article-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+    }
+
+    .article-excerpt {
+      color: var(--text-secondary);
+    }
+
+    .read-more {
+      display: inline-block;
+      margin-top: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-style: italic;
+      transition: opacity 0.3s ease;
+    }
+
+    .read-more:hover {
+      opacity: 0.8;
+    }
+
+    /* Travel */
+    .location {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      align-items: start;
+    }
+
+    .location-image {
+      width: 100%;
+      aspect-ratio: 1/1.3;
+      object-fit: cover;
+      filter: grayscale(20%);
+    }
+
+    .location-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+    }
+
+    .location-description {
+      color: var(--text-secondary);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 3vh;
+      padding-top: 2vh;
+      text-align: center;
+      grid-column: 1 / -1;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    /* Media queries */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: relative;
+        top: 0;
+      }
+
+      .location {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Utilities */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .aspect-ratio-box {
+      position: relative;
+      height: 0;
+      padding-top: 56.25%; /* 16:9 aspect ratio */
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+
+    .aspect-ratio-box img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="daniyar.jpg" alt="Daniyar" class="profile-image">
+      </div>
+
+      <div class="bio">
+        <h1>Данияр</h1>
+        <p class="lead">В жизни всегда есть место для пу-пу-пу.</p>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#writings">Тексты</a></li>
+          <li><a href="#photography">Фотографии</a></li>
+          <li><a href="#projects">Проекты</a></li>
+          <li><a href="#work">Работа</a></li>
+        </ul>
+      </nav>
+
+      <div class="social-links">
+        <a href="https://www.instagram.com/agabekovd" class="social-link" title="Instagram" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/agabekovd/" class="social-link" title="LinkedIn" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="https://www.facebook.com/daniyar.agabekov/" class="social-link" title="Facebook" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
+        <a href="https://x.com/agabekovd" class="social-link" title="Twitter" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+        </a>
+        <a href="https://t.me/d_with_love" class="social-link" title="Telegram" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section id="writings" class="section" style="animation-delay: 0.5s;">
+        <h2 class="section-title">Тексты</h2>
+        <p>Мысли, размышления и наблюдения, оформленные в слова. Коллекция эссе о человеческих отношениях, невербальной коммуникации и тех особых моментах, которые формируют наш внутренний мир и связи с другими.</p>
+        <div class="articles">
+          <article class="article">
+            <h3 class="article-title">Язык невысказанных слов</h3>
+            <p class="article-excerpt">То, что мы не говорим, часто имеет больший вес, чем то, что мы произносим. Исследование нюансов невербальной коммуникации в интимных отношениях и того, как эти безмолвные выражения формируют наши связи с другими.</p>
+            <a href="#" class="read-more">Читать эссе</a>
+          </article>
+          
+          <article class="article">
+            <h3 class="article-title">Паттерны воссоединения</h3>
+            <p class="article-excerpt">Цикл разлуки и воссоединения – это фундаментальный ритм человеческих отношений. Эта работа исследует, как дистанция – как физическая, так и эмоциональная – трансформирует наше восприятие других и самих себя.</p>
+            <a href="#" class="read-more">Читать эссе</a>
+          </article>
+          
+          <article class="article">
+            <h3 class="article-title">Комфорт незнакомцев</h3>
+            <p class="article-excerpt">Существует особая интимность, которая может развиться между незнакомцами – в поездах, кафе или проходя через чужие города. Это эссе исследует эти эфемерные связи и то, что они говорят о нашей потребности в человеческом контакте.</p>
+            <a href="#" class="read-more">Читать эссе</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="photography" class="section" style="animation-delay: 0.6s;">
+        <h2 class="section-title">Фотографии</h2>
+        <p>Моменты, запечатленные через видоискатель – коллекция визуальных фрагментов из различных путешествий и повседневных наблюдений. Меня привлекают пограничные пространства, игра света и нежная меланхолия непостоянства.</p>
+        
+        <div class="gallery">
+          <div class="gallery-item featured">
+            <a href="https://daniyar.media/" target="_blank" rel="noopener">
+              <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Night city street" class="gallery-image">
+            </a>
+          </div>
+          <div class="gallery-item portrait">
+            <a href="https://daniyar.media/" target="_blank" rel="noopener">
+              <img src="https://images.unsplash.com/photo-1517423568366-8b83523034fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Dog with yellow hat" class="gallery-image">
+            </a>
+          </div>
+          <div class="gallery-item landscape">
+            <a href="https://daniyar.media/" target="_blank" rel="noopener">
+              <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Portrait of woman" class="gallery-image">
+            </a>
+          </div>
+          <div class="gallery-item">
+            <a href="https://daniyar.media/" target="_blank" rel="noopener">
+              <img src="https://images.unsplash.com/photo-1437846972679-9e6e537be46e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1854&q=80" alt="Airplane wing sunset" class="gallery-image">
+            </a>
+          </div>
+          <div class="gallery-item landscape">
+            <a href="https://daniyar.media/" target="_blank" rel="noopener">
+              <img src="https://images.unsplash.com/photo-1603148449970-8533f127aab0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Urban geometry" class="gallery-image">
+            </a>
+          </div>
+          <div class="gallery-item">
+            <a href="https://daniyar.media/" target="_blank" rel="noopener">
+              <img src="https://images.unsplash.com/photo-1611506573285-928760908154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Textural study" class="gallery-image">
+            </a>
+          </div>
+          <div class="gallery-item portrait">
+            <a href="https://daniyar.media/" target="_blank" rel="noopener">
+              <img src="https://images.unsplash.com/photo-1610552250868-8c99a6f71947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Architectural detail" class="gallery-image">
+            </a>
+          </div>
+          <div class="gallery-item">
+            <a href="https://daniyar.media/" target="_blank" rel="noopener">
+              <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Nature detail" class="gallery-image">
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section" style="animation-delay: 0.7s;">
+        <h2 class="section-title">Проекты</h2>
+        
+        <div class="projects">
+          <div class="project project-travel">
+            <div class="aspect-ratio-box" style="padding-top: 56.25%;">
+              <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Дорожный Дневник" class="project-image">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Дорожный Дневник</h3>
+              <p class="project-description">Журнал путешествий, документирующий малоизвестные направления и аутентичные культурные опыты. Сочетает фотографии, эссе и практические советы для искателей приключений.</p>
+            </div>
+          </div>
+          
+          <div class="project project-app">
+            <div class="project-app-container">
+              <div class="app-screenshot-container">
+                <div class="app-screenshot">
+                  <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="iOS Приложение" class="app-image">
+                </div>
+              </div>
+              <div class="app-content">
+                <h3 class="project-title">МоёПриложение</h3>
+                <p class="project-description">Интуитивное iOS приложение для оптимизации повседневных задач и повышения продуктивности. С элегантным интерфейсом и продуманным UX дизайном, приложение предлагает персонализированный опыт для каждого пользователя.</p>
+                <div class="app-store-link">
+                  <a href="#" class="app-store-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"></path><path d="M10 2c1 .5 2 2 2 5"></path></svg>
+                    <span>Скачать в App Store</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="section" style="animation-delay: 0.8s;">
+        <h2 class="section-title">Работа</h2>
+        <p>Мой профессиональный опыт и ключевые проекты, над которыми я работал.</p>
+        
+        <div class="work-sections">
+          <div class="work-section">
+            <h3>Копирайтер</h3>
+            <p>Создаю убедительные и эмоциональные тексты для брендов и медиа. Специализируюсь на лонгридах, интервью и нарративах, которые выстраивают глубокую связь с аудиторией через осмысленные истории.</p>
+          </div>
+          
+          <div class="work-section">
+            <h3>Агентство</h3>
+            <p>Сотрудничаю с креативными агентствами над разработкой контент-стратегий и созданием брендовых голосов. Помогаю компаниям находить свой уникальный тон и выражать сложные идеи простым, доступным языком.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Intersection Observer for scroll-triggered animations
+      const sections = document.querySelectorAll('.section');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 50,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Automatically detect image orientation and apply classes
+      function detectImageOrientation() {
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        
+        galleryImages.forEach(img => {
+          // When image loads, check its dimensions and apply appropriate class
+          img.onload = function() {
+            const parentItem = img.closest('.gallery-item');
+            
+            // Remove existing orientation classes to prevent duplicates
+            parentItem.classList.remove('portrait', 'landscape', 'featured');
+            
+            // Check image orientation based on aspect ratio
+            if (this.naturalWidth / this.naturalHeight > 1.5) {
+              // Wide landscape
+              parentItem.classList.add('landscape');
+            } else if (this.naturalHeight / this.naturalWidth > 1.5) {
+              // Tall portrait
+              parentItem.classList.add('portrait');
+            }
+          };
+          
+          // If image is already loaded, trigger onload manually
+          if (img.complete) {
+            img.onload();
+          }
+        });
+        
+        // Set one image as featured (you can customize this logic)
+        const firstItem = document.querySelector('.gallery-item:first-child');
+        if (firstItem) {
+          firstItem.classList.add('featured');
+          firstItem.classList.remove('portrait', 'landscape'); // Featured overrides other classes
+        }
+      }
+      
+      // Run the orientation detection
+      detectImageOrientation();
+      
+      // Function to manually adjust the gallery layout
+      window.adjustGalleryLayout = function(config) {
+        // config is an array of objects with format: {index: 0, class: 'portrait|landscape|featured|none'}
+        if (!config || !Array.isArray(config)) return;
+        
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        config.forEach(item => {
+          if (typeof item.index !== 'number' || item.index < 0 || item.index >= galleryItems.length) return;
+          
+          const element = galleryItems[item.index];
+          
+          // Reset classes
+          element.classList.remove('portrait', 'landscape', 'featured');
+          
+          // Apply new class if specified and not 'none'
+          if (item.class && item.class !== 'none') {
+            element.classList.add(item.class);
+          }
+        });
+      };
+      
+      // Example usage:
+      // window.adjustGalleryLayout([
+      //   {index: 0, class: 'featured'},
+      //   {index: 1, class: 'portrait'},
+      //   {index: 2, class: 'landscape'},
+      //   {index: 3, class: 'none'} // Regular square
+      // ]);
+    });
+  </script>
+</body>
+</html> 
