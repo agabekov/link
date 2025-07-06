@@ -19,7 +19,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant:wght@300;400;500;600&family=Inter:wght@300;400;500&subset=cyrillic,cyrillic-ext&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Oswald:wght@200;300;400;500;600;700&subset=cyrillic,cyrillic-ext&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-color: #1a1a1a;
@@ -95,9 +95,11 @@
     }
 
     h1 {
+      font-family: 'Oswald', sans-serif;
       font-size: clamp(2.5rem, 8vw, 4.5rem);
       margin-bottom: 1rem;
       letter-spacing: -0.03em;
+      font-weight: 400;
     }
 
     h2 {
@@ -241,7 +243,7 @@
       position: relative;
       margin-bottom: 1rem;
       padding-left: 1rem;
-      font-family: 'EB Garamond', serif;
+      font-family: 'Oswald', sans-serif;
       font-weight: 400;
       letter-spacing: -0.02em;
     }
@@ -273,7 +275,7 @@
     }
     
     .project-title {
-      font-family: 'EB Garamond', serif;
+      font-family: 'Oswald', sans-serif;
       font-size: 1.3rem;
       margin-bottom: 0.5rem;
       letter-spacing: -0.02em;
@@ -313,6 +315,7 @@
     }
     
     .project-travel .project-title {
+      font-family: 'Oswald', sans-serif;
       font-size: 1.6rem;
     }
     
@@ -805,7 +808,7 @@
         <div class="projects">
           <div class="project project-travel">
             <div>
-              <a href="https://go.daniyar.link/oneway" style="text-decoration: none; color: inherit; display: block;" target="_blank">
+              <a href="https://go.daniyar.link/oneway-link" style="text-decoration: none; color: inherit; display: block;" target="_blank">
                 <div class="aspect-ratio-box" style="padding-top: 56.25%;">
                   <img src="https://images.unsplash.com/photo-1529592936026-7846d2a89e8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fE1vbnRlbmVncm98ZW58MHx8fHwxNzMwMTA1MTg3fDA&ixlib=rb-4.0.3&q=80&w=2000" alt="Oneway" class="project-image">
                 </div>
@@ -813,7 +816,7 @@
               <div class="project-content">
                 <h3 class="project-title">Oneway</h3>
                 <p class="project-description">Путеводитель по достопримечательностям мира, полностью сгенерированный ИИ.</p>
-                <a href="https://go.daniyar.link/oneway" style="color: var(--accent); text-decoration: none; font-style: italic; display: inline-block;" target="_blank">Перейти в путеводитель</a>
+                <a href="https://go.daniyar.link/oneway-link" style="color: var(--accent); text-decoration: none; font-style: italic; display: inline-block;" target="_blank">Перейти в путеводитель</a>
               </div>
             </div>
           </div>
@@ -826,12 +829,12 @@
                 </div>
               </div>
               <div class="app-content">
-                <h3 class="project-title" style="font-size: 1.6rem;">Verdict</h3>
+                <h3 class="project-title" style="font-size: 1.6rem; font-family: 'Oswald', sans-serif;">Verdict</h3>
                 <p class="project-description">Я сделал приложение, потому что мне хотелось делиться в инстаграме фильмами, которые смотрю.
 
 Приложение бесплатное и доступно на 35 языках.</p>
                 <div class="app-store-link">
-                  <a href="https://go.daniyar.link/verdict" class="app-store-button">
+                  <a href="https://go.daniyar.link/verdict-link" class="app-store-button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"></path><path d="M10 2c1 .5 2 2 2 5"></path></svg>
                     <span>Скачать в App Store</span>
                   </a>
