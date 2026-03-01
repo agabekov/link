@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
   <title>Это Данияр Агабеков</title>
 
   <!-- Favicon -->
@@ -26,6 +27,16 @@
       --text: #1a1916;
       --text-secondary: #9a9590;
       --border: rgba(0, 0, 0, 0.08);
+      color-scheme: light dark;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #171512;
+        --text: #f4efe9;
+        --text-secondary: #b7ada3;
+        --border: rgba(255, 255, 255, 0.14);
+      }
     }
 
     * {
