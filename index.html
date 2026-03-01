@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Это Данияр Агабеков</title>
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="daniyar.jpg">
   <link rel="apple-touch-icon" href="daniyar.jpg">
-  
+
   <!-- OpenGraph -->
   <meta property="og:title" content="Это Данияр Агабеков">
   <meta property="og:description" content="Если в тебе много любви, то ты вообще непобедимый.">
@@ -16,18 +16,16 @@
   <meta property="og:url" content="https://daniyar.link">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Данияр">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Oswald:wght@200;300;400;500;600;700&subset=cyrillic,cyrillic-ext&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&subset=cyrillic,cyrillic-ext&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #1a1a1a;
-      --text-primary: #f0f0f0;
-      --text-secondary: #b3b3b3;
-      --accent: #d4a373;
-      --border: rgba(255, 255, 255, 0.1);
-      --column-width: 65ch;
+      --bg: #f9f7f4;
+      --text: #1a1916;
+      --text-secondary: #9a9590;
+      --border: rgba(0, 0, 0, 0.08);
     }
 
     * {
@@ -36,945 +34,283 @@
       box-sizing: border-box;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-primary);
-      line-height: 1.6;
-      font-weight: 300;
-      position: relative;
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 22px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      pointer-events: none;
-      z-index: 1000;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E");
-      opacity: 0.5;
-    }
-
-    .container {
-      max-width: 1200px;
+    .page {
+      max-width: 640px;
       margin: 0 auto;
-      padding: 3vh 5vw;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      grid-gap: 5vh 5vw;
-      position: relative;
-      z-index: 1;
+      padding: 12vh 2rem 10vh;
     }
 
-    .sidebar {
-      position: sticky;
-      top: 5vh;
-      height: min-content;
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 5rem;
     }
 
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    /* Typography */
-    h1, h2, h3 {
-      font-family: 'EB Garamond', serif;
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-
-    h1 {
-      font-family: 'Oswald', sans-serif;
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      margin-bottom: 1rem;
-      letter-spacing: -0.03em;
-      font-weight: 400;
-    }
-
-    h2 {
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-      font-weight: 400;
-    }
-
-    p {
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
-      max-width: var(--column-width);
-    }
-
-    .lead {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.4rem;
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
-      color: var(--text-secondary);
-      max-width: var(--column-width);
-      font-weight: 400;
-    }
-
-    .caption {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      font-style: italic;
-      margin-top: 0.5rem;
-    }
-
-    /* Profile */
-    .profile {
-      margin-bottom: 0.75rem;
-    }
-
-    .profile-image {
-      width: 12rem;
-      height: 12rem;
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
       object-fit: cover;
       object-position: center top;
-      margin-bottom: 0.75rem;
-      filter: grayscale(0%);
-      animation: fadeIn 1s ease-out forwards;
-      border-radius: 50%;
-    }
-
-    .bio {
-      margin-bottom: 1.5rem;
-      animation: fadeIn 1s ease-out 0.2s forwards;
-      opacity: 0;
-    }
-
-    /* Navigation */
-    nav {
-      margin-bottom: 1rem;
-      animation: fadeIn 1s ease-out 0.3s forwards;
-      opacity: 0;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-    }
-
-    nav li {
-      margin-bottom: 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--text-primary);
-      font-family: 'EB Garamond', serif;
-      font-size: 1.4rem;
-      transition: color 0.3s ease;
-      position: relative;
-      letter-spacing: -0.01em;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--accent);
-      transition: width 0.3s ease;
-    }
-
-    nav a:hover::after, 
-    nav a.active::after {
-      width: 100%;
-    }
-
-    nav a.active::after {
-      width: 100%;
-    }
-
-    /* Social Links */
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      animation: fadeIn 1s ease-out 0.4s forwards;
-      opacity: 0;
-      position: relative;
-      z-index: 5;
-      background-color: var(--bg-color);
-      padding: 0.5rem 0;
-    }
-
-    .social-link {
-      color: var(--text-secondary);
-      transition: color 0.3s ease, transform 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .social-link:hover {
-      color: var(--text-primary);
-      transform: translateY(-2px);
-    }
-
-    /* Sections */
-    .section {
-      animation: fadeIn 1s ease-out forwards;
-      opacity: 0;
       margin-bottom: 1.5rem;
     }
 
-    .section-title {
-      position: relative;
-      margin-bottom: 1rem;
-      padding-left: 1rem;
-      font-family: 'Oswald', sans-serif;
-      font-weight: 400;
+    .name {
+      font-size: 2.4rem;
+      font-weight: 500;
       letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
     }
 
-    .section-title::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.5rem;
-      bottom: 0.5rem;
-      width: 2px;
-      background-color: var(--accent);
-    }
-
-    /* Projects */
-    .projects {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    .project {
-      margin-bottom: 1rem;
-      transition: transform 0.3s ease;
-    }
-    
-    .project:hover {
-      transform: translateY(-5px);
-    }
-    
-    .project-title {
-      font-family: 'Oswald', sans-serif;
+    .tagline {
+      color: var(--text-secondary);
       font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-      font-weight: 400;
+      font-style: italic;
+      line-height: 1.5;
+      max-width: 400px;
+      margin: 0 auto 1.75rem;
     }
-    
-    .project-description {
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .social a {
       color: var(--text-secondary);
+      transition: color 0.2s;
+      display: flex;
+    }
+
+    .social a:hover {
+      color: var(--text);
+      opacity: 0.6;
+    }
+
+    /* ── Sections ── */
+    .section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    .section-label a {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .section-label a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .section-label .arrow {
+      font-size: 0.75rem;
+      margin-left: 0.25rem;
+    }
+
+    /* ── Writing section ── */
+    .post-list {
+      list-style: none;
+    }
+
+    .post-list li {
+      margin-bottom: 0.4rem;
+    }
+
+    .post-list a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: inherit;
+      transition: text-decoration-color 0.2s;
+      line-height: 1.7;
+      text-decoration-color: transparent;
+    }
+
+    .post-list a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── Project / Work rows ── */
+    .row-list {
+      list-style: none;
+    }
+
+    .row-list li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 0.5rem;
+      align-items: baseline;
+      line-height: 1.5;
+    }
+
+    .row-list li:last-child {
+      border-bottom: none;
+    }
+
+    .row-name {
+      font-weight: 500;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .row-name a {
+      color: var(--text);
+      text-decoration: none;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .row-name a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .row-desc {
+      color: var(--text-secondary);
+    }
+
+    .row-arrow {
+      font-size: inherit;
+      color: var(--text-secondary);
+      margin-left: 0.15rem;
+    }
+
+    /* ── Loading state ── */
+    .loading {
+      color: var(--text-secondary);
+      font-style: italic;
       font-size: 0.95rem;
     }
-    
-    .project-image {
-      width: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .project:hover .project-image {
-      transform: scale(1.03);
-    }
-    
-    /* Travel project styles */
-    .project-travel {
-      background-color: rgba(255, 255, 255, 0.03);
-      border-radius: 4px;
-      overflow: hidden;
-      border-bottom: 3px solid var(--accent);
-    }
-    
-    .project-travel .project-content {
-      padding: 1.5rem;
-    }
-    
-    .project-travel .aspect-ratio-box {
-      margin-bottom: 0;
-      overflow: hidden;
-    }
-    
-    .project-travel .project-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.6rem;
-    }
-    
-    .project-travel .project-description {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
 
-    /* App project styles */
-    .project-app {
-      background-color: rgba(255, 255, 255, 0.03);
-      padding: 1.5rem;
-      border-radius: 4px;
-      border-left: 3px solid var(--accent);
-    }
-    
-    .project-app-container {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    
-    .app-screenshot-container {
-      width: 260px;
-      display: flex;
-      justify-content: center;
-    }
-    
-    .app-screenshot {
-      width: 260px;
-      height: 560px; /* Increased from 520px to show full image */
-      border-radius: 24px;
-      overflow: hidden;
-      border: 8px solid #222;
-      position: relative;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    }
-    
-    .app-screenshot::before {
-      content: '';
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120px;
-      height: 24px;
-      background-color: #222;
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px;
-      z-index: 1;
-    }
-    
-    .app-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
-    
-    .app-content {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .app-store-link {
-      margin-top: 1.5rem;
-    }
-    
-    .app-store-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      background-color: rgba(212, 163, 115, 0.15);
-      color: #fff;
-      text-decoration: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(212, 163, 115, 0.3);
-    }
-    
-    .app-store-button:hover {
-      background-color: rgba(212, 163, 115, 0.25);
-      transform: translateY(-2px);
-    }
-    
-    .app-store-button svg {
-      color: var(--accent);
-    }
-    
-    @media (max-width: 992px) {
-      .project-app-container {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      .app-screenshot-container {
-        width: 100%;
-      }
-      
-      .app-screenshot {
-        margin: 0 auto;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .project-travel .project-title {
-        font-size: 1.4rem;
-      }
-      
-      .project-travel .project-description {
-        font-size: 0.95rem;
-      }
-      
-      .app-store-button {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-
-    /* Photography */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 200px;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-
-    .gallery-item {
-      overflow: hidden;
-      position: relative;
-      border-radius: 3px;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-
-    .gallery-item a {
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      z-index: 1;
-    }
-
-    .gallery-item:hover {
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      transform: translateY(-2px);
-    }
-
-    .gallery-item.portrait {
-      grid-row: span 2;
-    }
-
-    .gallery-item.landscape {
-      grid-column: span 2;
-    }
-
-    .gallery-item.featured {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    .gallery-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-      filter: grayscale(20%);
-    }
-
-    .gallery-item:hover .gallery-image {
-      transform: scale(1.03);
-      filter: grayscale(0%);
-    }
-
-    /* Gallery item overlay */
-    .gallery-item a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0);
-      transition: background 0.3s ease;
-      z-index: 2;
-    }
-
-    .gallery-item a::after {
-      content: '';
-      position: absolute;
-      right: 15px;
-      bottom: 15px;
-      width: 25px;
-      height: 25px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'%3E%3C/path%3E%3Cpolyline points='15 3 21 3 21 9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E");
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 3;
-      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
-    }
-
-    .gallery-item:hover a::after {
-      opacity: 0.8;
-    }
-
-    .gallery-item:hover a::before {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    /* Media queries for responsive gallery */
-    @media (max-width: 992px) {
-      .gallery {
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: 180px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 160px;
-      }
-      
-      .gallery-item.landscape,
-      .gallery-item.featured {
-        grid-column: span 2;
-      }
-    }
-
+    /* ── Responsive ── */
     @media (max-width: 480px) {
-      .gallery {
-        grid-template-columns: 1fr;
-        grid-auto-rows: auto;
-      }
-      
-      .gallery-item {
-        grid-column: 1 !important;
-        grid-row: auto !important;
-        height: 50vh;
-      }
-      
-      .gallery-item.portrait {
-        height: 70vh;
-      }
-    }
-
-    /* Music */
-    .music-player {
-      background-color: rgba(0,0,0,0.2);
-      padding: 1.5rem;
-      border-radius: 2px;
-      max-width: var(--column-width);
-      border: 1px solid var(--border);
-    }
-
-    .track {
-      display: flex;
-      align-items: center;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .track:last-child {
-      border-bottom: none;
-    }
-
-    .track-number {
-      width: 2rem;
-      color: var(--text-secondary);
-    }
-
-    .track-info {
-      flex-grow: 1;
-    }
-
-    .track-title {
-      font-family: 'EB Garamond', serif;
-      margin-bottom: 0.25rem;
-    }
-
-    .track-length {
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-    }
-
-    /* Writings */
-    .article {
-      margin-bottom: 0.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: none;
-    }
-
-    .article:last-child {
-      border-bottom: none;
-    }
-
-    .article-date {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-secondary);
-      margin-bottom: 0.5rem;
-    }
-
-    .article-title {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-      font-weight: 400;
-    }
-
-    .article-excerpt {
-      color: var(--text-secondary);
-    }
-
-    .read-more {
-      display: inline-block;
-      margin-top: 0.75rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-style: italic;
-      transition: opacity 0.3s ease;
-    }
-
-    .read-more:hover {
-      opacity: 0.8;
-    }
-
-    .article-title a {
-      text-decoration: none;
-      color: var(--accent);
-    }
-
-    /* Travel */
-    .location {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      align-items: start;
-    }
-
-    .location-image {
-      width: 100%;
-      aspect-ratio: 1/1.3;
-      object-fit: cover;
-      filter: grayscale(20%);
-    }
-
-    .location-name {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-      font-weight: 400;
-    }
-
-    .location-description {
-      color: var(--text-secondary);
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 3vh;
-      padding-top: 2vh;
-      text-align: center;
-      grid-column: 1 / -1;
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-    }
-
-    /* Media queries */
-    @media (max-width: 768px) {
-      .container {
-        grid-template-columns: 1fr;
+      .page {
+        padding: 8vh 1.25rem 8vh;
       }
 
-      .sidebar {
-        position: relative;
-        top: 0;
+      .header {
+        margin-bottom: 3.5rem;
       }
 
-      .location {
-        grid-template-columns: 1fr;
+      .avatar {
+        width: 100px;
+        height: 100px;
       }
-    }
 
-    /* Utilities */
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-    }
+      .name {
+        font-size: 1.5rem;
+      }
 
-    .aspect-ratio-box {
-      position: relative;
-      height: 0;
-      padding-top: 56.25%; /* 16:9 aspect ratio */
-      overflow: hidden;
-      margin-bottom: 0.75rem;
-    }
+      .section {
+        margin-bottom: 2.75rem;
+      }
 
-    .aspect-ratio-box img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      .row-list li {
+        flex-direction: column;
+        gap: 0.1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <aside class="sidebar">
-      <div class="profile">
-        <img src="daniyar.jpg" alt="Daniyar" class="profile-image">
-      </div>
-
-      <div class="bio">
-        <h1>Данияр</h1>
-        <p class="lead">Если в тебе много любви, то ты вообще непобедимый.</p>
-      </div>
-
-      <div class="social-links">
-        <a href="https://go.daniyar.link/instagram" class="social-link" title="Instagram" target="_blank">
+  <div class="page">
+    <header class="header">
+      <img src="daniyar.jpg" alt="Данияр" class="avatar">
+      <h1 class="name">Данияр</h1>
+      <p class="tagline">Если в тебе много любви, то ты вообще непобедимый.</p>
+      <div class="social">
+        <a href="https://go.daniyar.link/instagram" title="Instagram" target="_blank">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
         </a>
-        <a href="https://go.daniyar.link/linkedin" class="social-link" title="LinkedIn" target="_blank">
+        <a href="https://go.daniyar.link/linkedin" title="LinkedIn" target="_blank">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
         </a>
-        <a href="https://go.daniyar.link/facebook" class="social-link" title="Facebook" target="_blank">
+        <a href="https://go.daniyar.link/facebook" title="Facebook" target="_blank">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
         </a>
-        <a href="https://go.daniyar.link/x" class="social-link" title="Twitter" target="_blank">
+        <a href="https://go.daniyar.link/x" title="X" target="_blank">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
         </a>
-        <a href="https://go.daniyar.link/telegram" class="social-link" title="Telegram" target="_blank">
+        <a href="https://go.daniyar.link/telegram" title="Telegram" target="_blank">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
         </a>
       </div>
-    </aside>
+    </header>
 
-    <main class="main-content">
-      <section id="writings" class="section" style="animation-delay: 0.5s;">
-        <h2 class="section-title">Тексты</h2>
-        <p>Пишу о том, что меня волнует. О книгах, которые меня вдохновили. О местах, которые запали мне в душу. О людях, чьи истории изменили мой взгляд на мир. О маленьких радостях, которые наполняют жизнь смыслом.  О том, что заставляет сердце биться чаще. </p>
-        <a href="https://go.daniyar.link/blog" class="read-more" style="margin-top: 0; margin-bottom: 0; display: inline-block;">Перейти в блог</a>
-        
-        <h3 style="margin-top: 1.5rem; font-family: 'EB Garamond', serif;">Последние посты</h3>
-        <div class="articles" id="latest-posts">
-          <p style="color: var(--text-secondary); font-style: italic;">Загрузка...</p>
-        </div>
-      </section>
+    <section class="section">
+      <div class="section-label">
+        <a href="https://go.daniyar.link/blog" target="_blank">Тексты <span class="arrow">›</span></a>
+      </div>
+      <ul class="post-list" id="latest-posts">
+        <li class="loading">Загрузка...</li>
+      </ul>
+    </section>
 
+    <section class="section">
+      <div class="section-label">Проекты</div>
+      <ul class="row-list">
+        <li>
+          <span class="row-name"><a href="https://go.daniyar.link/oneway-link" target="_blank">Oneway</a></span>
+          <span class="row-desc">Путеводитель по достопримечательностям</span>
+        </li>
+        <li>
+          <span class="row-name"><a href="https://go.daniyar.link/verdict-link" target="_blank">Verdict</a></span>
+          <span class="row-desc">Приложение для любителей кино</span>
+        </li>
+      </ul>
+    </section>
 
-      <section id="projects" class="section" style="animation-delay: 0.7s;">
-        <h2 class="section-title">Проекты</h2>
-        
-        <div class="projects">
-          <div class="project project-travel">
-            <div>
-              <a href="https://go.daniyar.link/oneway-link" style="text-decoration: none; color: inherit; display: block;" target="_blank">
-                <div class="aspect-ratio-box" style="padding-top: 56.25%;">
-                  <img src="https://images.unsplash.com/photo-1529592936026-7846d2a89e8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fE1vbnRlbmVncm98ZW58MHx8fHwxNzMwMTA1MTg3fDA&ixlib=rb-4.0.3&q=80&w=2000" alt="Oneway" class="project-image">
-                </div>
-              </a>
-              <div class="project-content">
-                <h3 class="project-title">Oneway</h3>
-                <p class="project-description">Путеводитель по достопримечательностям мира, полностью сгенерированный ИИ.</p>
-                <a href="https://go.daniyar.link/oneway-link" style="color: var(--accent); text-decoration: none; font-style: italic; display: inline-block;" target="_blank">Перейти в путеводитель</a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="project project-app">
-            <div class="project-app-container">
-              <div class="app-screenshot-container">
-                <div class="app-screenshot">
-                  <img src="verdict_screen.png" alt="iOS Приложение" class="app-image">
-                </div>
-              </div>
-              <div class="app-content">
-                <h3 class="project-title" style="font-size: 1.6rem; font-family: 'Oswald', sans-serif;">Verdict</h3>
-                <p class="project-description">Я сделал приложение, потому что мне хотелось делиться в инстаграме фильмами, которые смотрю.</p>
-                <div class="app-store-link">
-                  <a href="https://go.daniyar.link/verdict-link" class="app-store-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"></path><path d="M10 2c1 .5 2 2 2 5"></path></svg>
-                    <span>Скачать в App Store</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="work" class="section" style="animation-delay: 0.8s;">
-        <h2 class="section-title">Работа</h2>
-
-        <div class="work-sections">
-          <div class="work-section">
-            <h3>Копирайтер и UX-писатель</h3>
-            <p>Объясняю ценность продукта так, чтобы клиенты сами захотели его купить, а в интерфейсах делаю взаимодействие простым и понятным. Фокусируюсь на пользе для клиента, а не на громких обещаниях — будь то продающий текст или кнопка в приложении.</p>
-          </div>
-
-          <p><a href="https://go.daniyar.link/work-link" style="color: var(--accent); text-decoration: none; font-style: italic; display: inline-block;" target="_blank">Подробнее</a></p>
-          
-          <div class="work-section">
-            <h3>Студия NoName</h3>
-            <p>Пишу сам и руковожу командой гострайтеров, которая создаёт тексты под ваш голос. Изучаем особенности речи, пишем так, будто автор — вы сами.</p>
-          </div>
-          
-          <p><a href="https://go.daniyar.link/noname-link" style="color: var(--accent); text-decoration: none; font-style: italic; display: inline-block;" target="_blank">Подробнее</a></p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-    </footer>
+    <section class="section">
+      <div class="section-label">Работа</div>
+      <ul class="row-list">
+        <li>
+          <span class="row-name"><a href="https://go.daniyar.link/work-link" target="_blank">Копирайтер и UX-писатель</a></span>
+          <span class="row-desc">Объясняю ценность продукта просто и понятно</span>
+        </li>
+        <li>
+          <span class="row-name"><a href="https://go.daniyar.link/noname-link" target="_blank">Студия NoName</a></span>
+          <span class="row-desc">Тексты под ваш голос</span>
+        </li>
+      </ul>
+    </section>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Intersection Observer for scroll-triggered animations
-      const sections = document.querySelectorAll('.section');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      sections.forEach(section => {
-        observer.observe(section);
+    fetch('https://daniyar.blog/ghost/api/content/posts/?key=83a055d91a51ae6990e5e85a8b&limit=5&fields=title,url&order=published_at%20desc')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('latest-posts').innerHTML = data.posts
+          .map(post => `<li><a href="${post.url}?utm_source=link">${post.title}</a></li>`)
+          .join('');
+      })
+      .catch(() => {
+        document.getElementById('latest-posts').innerHTML =
+          '<li class="loading">Не удалось загрузить посты.</li>';
       });
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          
-          const targetId = this.getAttribute('href');
-          const targetElement = document.querySelector(targetId);
-          
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 50,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-
-      // Automatically detect image orientation and apply classes
-      function detectImageOrientation() {
-        const galleryImages = document.querySelectorAll('.gallery-image');
-        
-        galleryImages.forEach(img => {
-          // When image loads, check its dimensions and apply appropriate class
-          img.onload = function() {
-            const parentItem = img.closest('.gallery-item');
-            
-            // Remove existing orientation classes to prevent duplicates
-            parentItem.classList.remove('portrait', 'landscape', 'featured');
-            
-            // Check image orientation based on aspect ratio
-            if (this.naturalWidth / this.naturalHeight > 1.5) {
-              // Wide landscape
-              parentItem.classList.add('landscape');
-            } else if (this.naturalHeight / this.naturalWidth > 1.5) {
-              // Tall portrait
-              parentItem.classList.add('portrait');
-            }
-          };
-          
-          // If image is already loaded, trigger onload manually
-          if (img.complete) {
-            img.onload();
-          }
-        });
-        
-        // Set one image as featured (you can customize this logic)
-        const firstItem = document.querySelector('.gallery-item:first-child');
-        if (firstItem) {
-          firstItem.classList.add('featured');
-          firstItem.classList.remove('portrait', 'landscape'); // Featured overrides other classes
-        }
-      }
-      
-      // Run the orientation detection
-      detectImageOrientation();
-
-      // Load latest posts from Ghost Content API
-      fetch('https://daniyar.blog/ghost/api/content/posts/?key=83a055d91a51ae6990e5e85a8b&limit=5&fields=title,url&order=published_at%20desc')
-        .then(res => res.json())
-        .then(data => {
-          const container = document.getElementById('latest-posts');
-          container.innerHTML = data.posts.map(post =>
-            `<div class="article">
-              <h4 class="article-title" style="font-size: 1.05rem; font-weight: 400; font-family: 'Inter', sans-serif;">
-                <a href="${post.url}?utm_source=link" style="text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 5px; color: inherit;">${post.title}</a>
-              </h4>
-            </div>`
-          ).join('');
-        })
-        .catch(() => {
-          document.getElementById('latest-posts').innerHTML =
-            '<p style="color: var(--text-secondary);">Не удалось загрузить посты.</p>';
-        });
-      
-      // Function to manually adjust the gallery layout
-      window.adjustGalleryLayout = function(config) {
-        // config is an array of objects with format: {index: 0, class: 'portrait|landscape|featured|none'}
-        if (!config || !Array.isArray(config)) return;
-        
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        
-        config.forEach(item => {
-          if (typeof item.index !== 'number' || item.index < 0 || item.index >= galleryItems.length) return;
-          
-          const element = galleryItems[item.index];
-          
-          // Reset classes
-          element.classList.remove('portrait', 'landscape', 'featured');
-          
-          // Apply new class if specified and not 'none'
-          if (item.class && item.class !== 'none') {
-            element.classList.add(item.class);
-          }
-        });
-      };
-      
-      // Example usage:
-      // window.adjustGalleryLayout([
-      //   {index: 0, class: 'featured'},
-      //   {index: 1, class: 'portrait'},
-      //   {index: 2, class: 'landscape'},
-      //   {index: 3, class: 'none'} // Regular square
-      // ]);
-    });
   </script>
   <!-- 100% privacy-first analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </body>
-</html> 
+</html>
