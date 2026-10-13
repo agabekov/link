@@ -106,7 +106,7 @@ The palette is nearly neutral, with a subdued olive reserved for interaction. Fr
 
 ## Typography
 
-**Display Font:** Old Standard TT, with Georgia and serif fallbacks.  
+**Display Font:** Old Standard TT, with Georgia and serif fallbacks.
 **Body Font:** Onest, with a sans-serif fallback.
 
 Both families are locally hosted in Cyrillic and Latin WOFF2 subsets with `font-display: swap`. The build loads Old Standard TT at weight 400 and Onest at weights 400, 500, and 600; ordinary content uses 400 and section headings use 600.
