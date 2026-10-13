@@ -31,4 +31,8 @@ logs/
 
 # Cache
 .cache/
-.temp/ 
+.temp/
+
+# Local design work and verification
+.impeccable/*
+!.impeccable/design.json

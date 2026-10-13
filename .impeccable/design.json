@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-13T17:54:30.211537+00:00",
+  "title": "Design System: Daniyar Agabekov",
+  "extensions": {
+    "colorMeta": {
+      "background": {
+        "role": "neutral",
+        "displayName": "Light Paper",
+        "canonical": "#f8f8f8",
+        "tonalRamp": [
+          "oklch(15% 0.00000 0.00)",
+          "oklch(26% 0.00000 0.00)",
+          "oklch(37% 0.00000 0.00)",
+          "oklch(49% 0.00000 0.00)",
+          "oklch(60% 0.00000 0.00)",
+          "oklch(72% 0.00000 0.00)",
+          "oklch(84% 0.00000 0.00)",
+          "oklch(95% 0.00000 0.00)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Dark Ink",
+        "canonical": "#252525",
+        "tonalRamp": [
+          "oklch(15% 0.00000 0.00)",
+          "oklch(26% 0.00000 0.00)",
+          "oklch(37% 0.00000 0.00)",
+          "oklch(49% 0.00000 0.00)",
+          "oklch(60% 0.00000 0.00)",
+          "oklch(72% 0.00000 0.00)",
+          "oklch(84% 0.00000 0.00)",
+          "oklch(95% 0.00000 0.00)"
+        ]
+      },
+      "secondary": {
+        "role": "neutral",
+        "displayName": "Soft Grey",
+        "canonical": "#646464",
+        "tonalRamp": [
+          "oklch(15% 0.00000 0.00)",
+          "oklch(26% 0.00000 0.00)",
+          "oklch(37% 0.00000 0.00)",
+          "oklch(49% 0.00000 0.00)",
+          "oklch(60% 0.00000 0.00)",
+          "oklch(72% 0.00000 0.00)",
+          "oklch(84% 0.00000 0.00)",
+          "oklch(95% 0.00000 0.00)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Quiet Rule",
+        "canonical": "#dededb",
+        "tonalRamp": [
+          "oklch(15% 0.00404 106.48)",
+          "oklch(26% 0.00404 106.48)",
+          "oklch(37% 0.00404 106.48)",
+          "oklch(49% 0.00404 106.48)",
+          "oklch(60% 0.00404 106.48)",
+          "oklch(72% 0.00404 106.48)",
+          "oklch(84% 0.00404 106.48)",
+          "oklch(95% 0.00404 106.48)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Muted Olive",
+        "canonical": "#56634e",
+        "tonalRamp": [
+          "oklch(15% 0.03648 133.62)",
+          "oklch(26% 0.03648 133.62)",
+          "oklch(37% 0.03648 133.62)",
+          "oklch(49% 0.03648 133.62)",
+          "oklch(60% 0.03648 133.62)",
+          "oklch(72% 0.03648 133.62)",
+          "oklch(84% 0.03648 133.62)",
+          "oklch(95% 0.03648 133.62)"
+        ]
+      },
+      "underline": {
+        "role": "neutral",
+        "displayName": "Underline Grey",
+        "canonical": "#a2a29c",
+        "tonalRamp": [
+          "oklch(15% 0.00856 106.62)",
+          "oklch(26% 0.00856 106.62)",
+          "oklch(37% 0.00856 106.62)",
+          "oklch(49% 0.00856 106.62)",
+          "oklch(60% 0.00856 106.62)",
+          "oklch(72% 0.00856 106.62)",
+          "oklch(84% 0.00856 106.62)",
+          "oklch(95% 0.00856 106.62)"
+        ]
+      },
+      "selection": {
+        "role": "neutral",
+        "displayName": "Pale Olive Selection",
+        "canonical": "#dfe5d9",
+        "tonalRamp": [
+          "oklch(15% 0.01729 128.67)",
+          "oklch(26% 0.01729 128.67)",
+          "oklch(37% 0.01729 128.67)",
+          "oklch(49% 0.01729 128.67)",
+          "oklch(60% 0.01729 128.67)",
+          "oklch(72% 0.01729 128.67)",
+          "oklch(84% 0.01729 128.67)",
+          "oklch(95% 0.01729 128.67)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Full Name",
+        "purpose": "Centered full-name heading."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Writing titles, project links, and work links."
+      },
+      "heading": {
+        "displayName": "Section Heading",
+        "purpose": "Writing, projects, and work headings."
+      },
+      "quote": {
+        "displayName": "Personal Quote",
+        "purpose": "Balanced supporting quote."
+      },
+      "social": {
+        "displayName": "Social Links",
+        "purpose": "Centered social navigation."
+      },
+      "description": {
+        "displayName": "Description",
+        "purpose": "Quiet project descriptions."
+      }
+    },
+    "shadows": [],
+    "motion": [],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "700px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Full Name",
+      "kind": "custom",
+      "refersTo": "full-name",
+      "description": "Centered full-name heading below the portrait.",
+      "html": "<h1 class=\"ds-name\">Данияр Агабеков</h1>",
+      "css": ".ds-name{margin:24px 0 0;text-align:center;color:var(--text,#252525);font-family:\"Old Standard TT\",Georgia,serif;font-size:clamp(40px,4.22vw,62px);font-weight:400;line-height:1.2;letter-spacing:-.02em;text-wrap:balance}@media(max-width:700px){.ds-name{margin-top:20px;font-size:clamp(34px,8.7vw,40px);line-height:1.15}}"
+    },
+    {
+      "name": "Personal Quote",
+      "kind": "custom",
+      "refersTo": "quote",
+      "description": "Balanced grey supporting quote.",
+      "html": "<p class=\"ds-quote\">Если в тебе много любви, то ты вообще непобедимый.</p>",
+      "css": ".ds-quote{max-width:440px;margin:18px auto 0;text-align:center;color:var(--secondary,#646464);font-family:\"Onest\",sans-serif;font-size:clamp(18px,1.36vw,20px);font-weight:400;line-height:1.4;text-wrap:balance}@media(max-width:700px){.ds-quote{max-width:340px;margin-top:16px;font-size:17px}}"
+    },
+    {
+      "name": "Social Navigation",
+      "kind": "nav",
+      "refersTo": "social-nav",
+      "description": "Centered, wrapping row of dark social text links.",
+      "html": "<nav class=\"ds-social\" aria-label=\"Социальные сети\"><a href=\"https://go.daniyar.link/instagram\">Instagram</a><a href=\"https://go.daniyar.link/linkedin\">LinkedIn</a></nav>",
+      "css": ".ds-social{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px clamp(28px,3.5vw,52px);margin-top:26px;font-family:\"Onest\",sans-serif;font-size:clamp(16px,1.36vw,20px);line-height:1.5}.ds-social a{color:var(--text,#252525);text-decoration:underline;text-decoration-color:var(--underline,#a2a29c);text-decoration-thickness:1px;text-underline-offset:5px;overflow-wrap:anywhere;display:inline-flex;align-items:center;min-height:32px}.ds-social a:hover{color:var(--accent,#56634e);text-decoration-color:currentColor}.ds-social a:focus-visible{outline:2px solid var(--accent,#56634e);outline-offset:5px;border-radius:2px}@media(max-width:700px){.ds-social{gap:6px 18px;margin-top:24px;font-size:15px}}"
+    },
+    {
+      "name": "Writing List",
+      "kind": "custom",
+      "refersTo": "writing-list",
+      "description": "Complete post titles wrap across the available width.",
+      "html": "<ul class=\"ds-writing\"><li><a href=\"https://blog.daniyar.link/\">Название текста</a></li><li><a href=\"https://blog.daniyar.link/\">Более длинное название текста, которое свободно переносится на следующую строку</a></li></ul>",
+      "css": ".ds-writing{list-style:none;padding:0;margin:16px 0 0;font-family:\"Onest\",sans-serif;font-size:clamp(18px,1.5vw,22px);font-weight:400;line-height:1.5}.ds-writing li+li{margin-top:14px}.ds-writing a{color:var(--text,#252525);text-decoration:underline;text-decoration-color:var(--underline,#a2a29c);text-decoration-thickness:1px;text-underline-offset:5px;overflow-wrap:anywhere;display:inline;line-height:1.6}.ds-writing a:hover{color:var(--accent,#56634e);text-decoration-color:currentColor}.ds-writing a:focus-visible{outline:2px solid var(--accent,#56634e);outline-offset:5px;border-radius:2px}@media(max-width:700px){.ds-writing{font-size:18px}}"
+    },
+    {
+      "name": "Project Entry",
+      "kind": "custom",
+      "refersTo": "project-entry",
+      "description": "A dark project link and quieter description on the page background.",
+      "html": "<div class=\"ds-project\"><a href=\"https://go.daniyar.link/verdict-link\">Verdict</a><p>Приложение для любителей кино</p></div>",
+      "css": ".ds-project{font-family:\"Onest\",sans-serif;font-size:clamp(18px,1.5vw,22px);font-weight:400;line-height:1.5}.ds-project a{color:var(--text,#252525);text-decoration:underline;text-decoration-color:var(--underline,#a2a29c);text-decoration-thickness:1px;text-underline-offset:5px;overflow-wrap:anywhere;}.ds-project p{margin:2px 0 0;color:var(--secondary,#646464);font-size:clamp(17px,1.36vw,20px)}.ds-project a:hover{color:var(--accent,#56634e);text-decoration-color:currentColor}.ds-project a:focus-visible{outline:2px solid var(--accent,#56634e);outline-offset:5px;border-radius:2px}@media(max-width:700px){.ds-project{font-size:18px}.ds-project p{font-size:17px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Quiet Personal Page",
+    "overview": "A quiet personal page built around a small natural portrait, a centered full name, and readable text links. The approved centered composition uses almost-white paper, dark text, grey supporting copy, and generous space.\n\nThe serif name adds a personal, literary character; the sans-serif content stays direct. Writing occupies the full content width, followed by a simple projects-and-work grid. The system remains light regardless of the device theme.",
+    "keyCharacteristics": [
+      "Centered portrait and full-name introduction.",
+      "Locally hosted Cyrillic and Latin typography.",
+      "Full-width writing titles with natural wrapping.",
+      "Flat surfaces, fine underlines, and restrained olive interaction."
+    ],
+    "rules": [
+      {
+        "name": "The Quiet Interaction Rule",
+        "body": "Reserve the muted olive for link hover and keyboard focus; all resting links use dark text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Natural Title Rule",
+        "body": "Writing titles remain complete and wrap naturally across the available content width.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Use spacing and a fine divider to separate content; the page has no elevated cards or shadows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the portrait small, circular, and natural.",
+      "Do use Old Standard TT for the full name and Onest for content.",
+      "Do let writing titles use the full content width and wrap naturally.",
+      "Do preserve the fixed light background and visible keyboard focus.",
+      "Do stack projects and work at the established mobile breakpoint."
+    ],
+    "donts": [
+      "Don't introduce poster-scale names, giant portraits, or saturated background fields.",
+      "Don't replace the text links with dashboard cards or a sales pitch.",
+      "Don't truncate post titles or restrict them to a narrow column.",
+      "Don't add decorative motion to the current static presentation."
+    ]
+  }
+}
